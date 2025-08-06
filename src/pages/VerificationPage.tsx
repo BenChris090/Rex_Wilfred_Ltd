@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
-import type { Task, User } from '../types';
-import { format } from 'date-fns';
-
+import type { Task } from '../types';
 const VerificationPage: React.FC = () => {
   const { userData } = useAuth();
   const [tasks, setTasks] = useState<Task[]>([]);

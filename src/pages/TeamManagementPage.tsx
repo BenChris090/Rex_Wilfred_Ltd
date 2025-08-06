@@ -5,10 +5,7 @@ import { db } from '../firebase';
 import type { User, Task } from '../types';
 import { format } from 'date-fns';
 import {
-  UserIcon,
-  ClipboardDocumentListIcon,
-  CheckCircleIcon,
-  CurrencyDollarIcon
+  UserIcon
 } from '@heroicons/react/24/outline';
 
 const TeamManagementPage: React.FC = () => {
