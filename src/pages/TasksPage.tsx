@@ -1,12 +1,7 @@
 import React from 'react';
 import TaskList from '../components/TaskList';
-import type { Task } from '../types';
 
 const TasksPage: React.FC = () => {
-  const handleTaskClick = (task: Task) => {
-    // Navigate to task details or open modal
-    console.log('Task clicked:', task);
-  };
 
   return (
     <div>
@@ -17,7 +12,7 @@ const TasksPage: React.FC = () => {
         </p>
       </div>
 
-      <TaskList onTaskClick={handleTaskClick} />
+      <TaskList />
     </div>
   );
 };
