@@ -21,10 +21,11 @@ const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
 
   const states = [
-    'Lagos', 'Kano', 'Kaduna', 'Katsina', 'Oyo', 'Rivers', 'Bauchi', 'Jigawa',
-    'Benue', 'Anambra', 'Borno', 'Sokoto', 'Abia', 'Plateau', 'Gombe', 'Niger',
-    'Taraba', 'Ebonyi', 'Imo', 'Nasarawa', 'Kebbi', 'Zamfara', 'Yobe', 'Kogi',
-    'Kwara', 'Ondo', 'Edo', 'Cross River', 'Akwa Ibom', 'Adamawa'
+    'Lagos', 'Kano', 'Kaduna', 'Katsina', 'Oyo', 'Rivers', 'Bauchi', 'Delta',
+    'Jigawa', 'Benue', 'Anambra', 'Borno', 'Sokoto', 'Abia', 'Plateau', 'Gombe', 
+    'Niger', 'Taraba', 'Ebonyi', 'Imo', 'Nasarawa', 'Kebbi', 'Zamfara', 'Yobe', 
+    'Kogi', 'Kwara', 'Ondo', 'Edo', 'Cross River', 'Akwa Ibom', 'Adamawa', 'Bayelsa',
+    'Enugu', 'Osun', 'Ogun', 'FCT'
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
