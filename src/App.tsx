@@ -11,6 +11,7 @@ import TeamManagementPage from './pages/TeamManagementPage';
 import TaskAssignmentPage from './pages/TaskAssignmentPage';
 import VerificationPage from './pages/VerificationPage';
 import AllTeams from './pages/AllTeams';
+import Settings from './pages/Settings';
 
 function ProtectedRoute({ roles }: { roles?: string[] }) {
   const { currentUser, userData, loading } = useAuth();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/submit-task" element={<TaskSubmissionPage />} />
             <Route path="/payment-summary" element={<PaymentSummaryPage />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/team-management" element={<ProtectedRoute roles={['state_head']} />}> 
               <Route index element={<TeamManagementPage />} />
             </Route>
