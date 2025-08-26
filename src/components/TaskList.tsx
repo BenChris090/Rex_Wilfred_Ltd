@@ -34,7 +34,18 @@ const TaskList: React.FC<TaskListProps> = ({ showActions = true }) => {
       if (!userData) return;
 
       try {
-        if (userData.role === 'team_member' || userData.role === 'state_head') {
+        if (userData.role === 'team_member') {
+          // Only fetch tasks assigned to this team member
+          if (typeof userData.state === 'string') {
+            const allTasks = await getTasksByState(userData.state);
+            const assignedTasks = allTasks.filter(
+              (task: Task) => task.assignedTo === userData.id
+            );
+            setTasks(assignedTasks);
+          } else {
+            setTasks([]); // or handle the missing state case as needed
+  }
+        } else if (userData.role === 'state_head') {
           if (userData?.state) {
             const stateTasks = await getTasksByState(userData.state);
             setTasks(stateTasks);
@@ -51,7 +62,7 @@ const TaskList: React.FC<TaskListProps> = ({ showActions = true }) => {
     };
 
     fetchTasks();
-  }, [userData, tasks]);
+  }, [userData]);
 
 const handleApprove = async () => {
   if (!selectedTask?.id) return;

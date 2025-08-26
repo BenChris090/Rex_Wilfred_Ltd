@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Task, User, TaskSubmission } from '../types';
+import { getUserById } from '../services/FetchUsers';
 
 interface TaskDetailsProps {
   task: Task;
-  assignedUser?: User;
   submission?: TaskSubmission;
 }
 
-const TaskDetails: React.FC<TaskDetailsProps> = ({ task, assignedUser, submission }) => {
+const TaskDetails: React.FC<TaskDetailsProps> = ({ task, submission }) => {
+  const [assignedUser, setAssignedUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const fetchAssignedUser = async () => {
+      if (task.assignedTo) {
+        const user = await getUserById(task.assignedTo);
+        setAssignedUser(user);
+      }
+    };
+    fetchAssignedUser();
+  }, [task.assignedTo]);
+
   return (
     <div className="bg-white rounded-lg shadow border border-gray-200 p-6">
       <h2 className="text-xl font-semibold text-gray-900 mb-2">{task.title}</h2>
@@ -50,4 +62,4 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task, assignedUser, submissio
   );
 };
 
-export default TaskDetails; 
+export default TaskDetails;
