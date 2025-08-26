@@ -119,11 +119,11 @@ const TeamManagementPage: React.FC = () => {
       </div>
 
       {/* Team Members List */}
-      <div className="bg-white shadow rounded-lg overflow-auto">
+      <div className="bg-white shadow rounded-lg">
         <div className="px-6 py-4 border-b border-gray-200">
           <h2 className="text-lg font-medium text-gray-900">Team Members</h2>
         </div>
-        <div className="overflow-hidden">
+        <div className="overflow-auto">
           {teamMembers.length === 0 ? (
             <div className="text-center py-8">
               <UserIcon className="mx-auto h-12 w-12 text-gray-400" />

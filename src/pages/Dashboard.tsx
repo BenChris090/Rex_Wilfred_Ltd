@@ -39,7 +39,9 @@ const Dashboard: React.FC = () => {
         if (userData.role === 'team_member') {
           // Team member sees only their tasks
           if (userData?.state) {
-            tasksQuery = await getTasksByState(userData.state);
+            const allTasks = await getTasksByState(userData.state);
+            // Only include tasks assigned to this user
+            tasksQuery = allTasks.filter((task: Task) => task.assignedTo === userData.id);
           }
 
         } else if (userData.role === 'state_head') {
@@ -386,4 +388,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard; 
+export default Dashboard;
